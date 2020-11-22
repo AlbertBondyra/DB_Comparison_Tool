@@ -5,6 +5,7 @@ import properties_conn_queries
 import pymysql
 import timer
 import os
+import mysql.connector
 import pyodbc
 from datetime import datetime
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton,
@@ -235,6 +236,9 @@ class WindowOracle(QMainWindow):
         self.ResetButton.setToolTip("Reset all buttons and content of file")
 
 
+
+
+
 class Window(QDialog):
     def __init__(self):
         super().__init__()
@@ -249,6 +253,7 @@ class Window(QDialog):
         self.MySQLbutton.clicked.connect(self.windowMySQL)
         self.Oraclebutton.clicked.connect(self.windowOracle)
 
+
     def InitWindow1(self):
         # self.setWindowIcon(QtGui.QIcon("C:\\Users\\alber\\OneDrive\\Dokumenty\\database.png"))
         self.setWindowIcon(QIcon('C:\\Users\\alber\\OneDrive\\Dokumenty\\database.png'))
@@ -256,8 +261,15 @@ class Window(QDialog):
         self.MySQLbutton = QPushButton('MySQL Connection', self)
         self.MySQLbutton.setGeometry(10, 25, 200, 50)
         self.MySQLbutton.clicked.connect(self.dbConnectionMySQL)
+        self.MySQLbutton.setStyleSheet("color : rgb(70,130,180)")
         self.MySQLbutton.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+
+        # "QPushButton:pressed { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+        # "QPushButton { background-color: #3cbaa2; border: 1px solid black;border-radius: 5px;}"
+        # "QPushButton::hover { background-color: rgb(0,0,205) }""QPushButton:pressed { background-color: rgb(170, 170, 127) }"
+
+        "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+        "QPushButton:pressed { background-color: #3cbaa2; border: 1px solid black;border-radius: 5px;}")
         self.setWindowTitle(self.title)
         self.MySQLbutton.setToolTip("Click to connect with MySQL DB")
 

@@ -1,5 +1,6 @@
 import cx_Oracle
 import config
+import mysql.connector
 import pymysql
 import pyodbc
 #file with results
@@ -105,8 +106,8 @@ sql5ORACLE = """select count(*) from countries union all select count(*) from be
 sql6ORACLE = """select 2+9 from dual"""
 
 #MySQL connection properties
-#properties to Docker Server
-# dbMySQL = pymysql.connect(host='localhost', port=52000, user='alamar6', passwd='pfizer', db='Diploma_Work')
+# properties to Docker Server
+# dbMySQL = mysql.connector.connect(host='localhost', port=52000, user='alamar6', passwd='{pfizer}', db='Diploma_Work',auth_plugin='mysql_native_password')
 # curMySQL = dbMySQL.cursor()
 #properties to local DB
 dbMySQL = pymysql.connect('localhost', 'bondya', 'pfizer', 'Dyplomowa_DB')
