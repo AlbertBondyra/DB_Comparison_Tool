@@ -2,7 +2,7 @@ import cx_Oracle
 import config
 import pymysql
 import pyodbc
-#file with resutls
+#file with results
 filepath = 'C:\\Users\\alber\\OneDrive\\Pulpit\\PracaAlberta\\AppFiles\\queries_times.txt'
 #MSSQL connection properties
 #properties to local DB

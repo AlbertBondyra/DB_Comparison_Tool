@@ -10,8 +10,5 @@ password = 'pfizer'
 dsn = cx_Oracle.makedsn("localhost", 4521, service_name="ORCLCDB.localdomain")
 # port = 4521
 encoding = 'UTF-8'
-#
 
-#
-#
 

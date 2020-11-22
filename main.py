@@ -100,6 +100,7 @@ class WindowMySQL(QMainWindow):
             lambda: timer.runQuery(properties_conn_queries.sql1MySQL, properties_conn_queries.curMySQL, order=1))
         self.MySQLbuttonRunQuery1.clicked.connect(lambda: timer.setEnabled(self.MySQLbuttonRunQuery1))
         self.MySQLbuttonRunQuery1.setToolTip(properties_conn_queries.sql1MySQL)
+
         self.MySQLbuttonRunQuery2 = QPushButton('RUN QUERY 2', self)
         self.MySQLbuttonRunQuery2.setGeometry(10, 100, 200, 50)
         self.MySQLbuttonRunQuery2.setStyleSheet(
@@ -107,7 +108,7 @@ class WindowMySQL(QMainWindow):
         self.MySQLbuttonRunQuery2.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql2MySQL, properties_conn_queries.curMySQL, order=2))
         self.MySQLbuttonRunQuery2.clicked.connect(lambda: timer.setEnabled(self.MySQLbuttonRunQuery2))
-        # self.MySQLbuttonRunQuery2.setToolTip(properties_conn_queries.sql1MySQL)
+        self.MySQLbuttonRunQuery2.setToolTip(properties_conn_queries.sql1MySQL)
         # runquery3
         self.MySQLbuttonRunQuery3 = QPushButton('RUN QUERY 3', self)
         self.MySQLbuttonRunQuery3.setGeometry(10, 175, 200, 50)
@@ -117,6 +118,7 @@ class WindowMySQL(QMainWindow):
             lambda: timer.runQuery(properties_conn_queries.sql3MySQL, properties_conn_queries.curMySQL, order=3))
         self.MySQLbuttonRunQuery3.clicked.connect(lambda: timer.setEnabled(self.MySQLbuttonRunQuery3))
         self.MySQLbuttonRunQuery3.setToolTip(properties_conn_queries.sql3MySQL)
+
         # runquery4
         self.MySQLbuttonRunQuery4 = QPushButton('RUN QUERY 4', self)
         self.MySQLbuttonRunQuery4.setGeometry(250, 25, 200, 50)
@@ -276,6 +278,7 @@ class Window(QDialog):
             "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
         self.setWindowTitle(self.title)
         self.MSSQLButton.setToolTip("Click to connect with MSSQL DB")
+
         if os.path.exists(properties_conn_queries.filepath):
             os.remove(properties_conn_queries.filepath)
         self.show()
