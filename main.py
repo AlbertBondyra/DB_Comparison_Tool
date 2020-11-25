@@ -1,5 +1,7 @@
 import sys
 import cx_Oracle
+from PyQt5 import Qt
+
 import config
 import properties_conn_queries
 import pymysql
@@ -9,9 +11,8 @@ import mysql.connector
 import pyodbc
 from datetime import datetime
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton,
-                             QMessageBox, QDialog)
+                             QMessageBox, QDialog, QVBoxLayout)
 from PyQt5.QtGui import QIcon
-
 
 class WindowMSSQL(QMainWindow):
     def __init__(self, parent=None):
@@ -19,73 +20,96 @@ class WindowMSSQL(QMainWindow):
         self.setWindowTitle("MSSQL")
         self.setWindowIcon(QIcon('C:\\Users\\alber\\Downloads\\mssql_icon.png'))
         self.setFixedSize(480, 480)
+
         # runquery1
         self.MSSQLbuttonRunQuery1 = QPushButton('RUN QUERY 1', self)
         self.MSSQLbuttonRunQuery1.setGeometry(10, 25, 200, 50)
+        self.MSSQLbuttonRunQuery1.setToolTip(properties_conn_queries.sql1MSSQL)
         self.MSSQLbuttonRunQuery1.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.MSSQLbuttonRunQuery1.clicked.connect(lambda: timer.setEnabled(self.MSSQLbuttonRunQuery1))
         self.MSSQLbuttonRunQuery1.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql1MSSQL, properties_conn_queries.curMSSQL, order=1))
-        self.MSSQLbuttonRunQuery1.clicked.connect(lambda: timer.setEnabled(self.MSSQLbuttonRunQuery1))
-        self.MSSQLbuttonRunQuery1.setToolTip(properties_conn_queries.sql1MSSQL)
+
         # runquery2
         self.MSSQLbuttonRunQuery2 = QPushButton('RUN QUERY 2', self)
+        self.MSSQLbuttonRunQuery2.setToolTip(properties_conn_queries.sql2MSSQL)
         self.MSSQLbuttonRunQuery2.setGeometry(10, 100, 200, 50)
         self.MSSQLbuttonRunQuery2.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.MSSQLbuttonRunQuery2.clicked.connect(lambda: timer.setEnabled(self.MSSQLbuttonRunQuery2))
         self.MSSQLbuttonRunQuery2.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql2MSSQL, properties_conn_queries.curMSSQL, order=2))
-        self.MSSQLbuttonRunQuery2.clicked.connect(lambda: timer.setEnabled(self.MSSQLbuttonRunQuery2))
-        self.MSSQLbuttonRunQuery2.setToolTip(properties_conn_queries.sql2MSSQL)
+
+
         # runquery3
         self.MSSQLbuttonRunQuery3 = QPushButton('RUN QUERY 3', self)
+        self.MSSQLbuttonRunQuery3.setToolTip(properties_conn_queries.sql3MSSQL)
         self.MSSQLbuttonRunQuery3.setGeometry(10, 175, 200, 50)
         self.MSSQLbuttonRunQuery3.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.MSSQLbuttonRunQuery3.clicked.connect(lambda: timer.setEnabled(self.MSSQLbuttonRunQuery3))
         self.MSSQLbuttonRunQuery3.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql3MSSQL, properties_conn_queries.curMSSQL, order=3))
-        self.MSSQLbuttonRunQuery3.clicked.connect(lambda: timer.setEnabled(self.MSSQLbuttonRunQuery3))
-        self.MSSQLbuttonRunQuery3.setToolTip(properties_conn_queries.sql3MSSQL)
+
         # runquery4
         self.MSSQLbuttonRunQuery4 = QPushButton('RUN QUERY 4', self)
+        self.MSSQLbuttonRunQuery4.setToolTip(properties_conn_queries.sql4MSSQL)
         self.MSSQLbuttonRunQuery4.setGeometry(250, 25, 200, 50)
         self.MSSQLbuttonRunQuery4.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.MSSQLbuttonRunQuery4.clicked.connect(lambda: timer.setEnabled(self.MSSQLbuttonRunQuery4))
         self.MSSQLbuttonRunQuery4.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql4MSSQL, properties_conn_queries.curMSSQL, order=4))
-        self.MSSQLbuttonRunQuery4.clicked.connect(lambda: timer.setEnabled(self.MSSQLbuttonRunQuery4))
-        self.MSSQLbuttonRunQuery4.setToolTip(properties_conn_queries.sql4MSSQL)
+
         # runquery5
         self.MSSQLbuttonRunQuery5 = QPushButton('RUN QUERY 5', self)
+        self.MSSQLbuttonRunQuery5.setToolTip(properties_conn_queries.sql5MSSQL)
         self.MSSQLbuttonRunQuery5.setGeometry(250, 100, 200, 50)
         self.MSSQLbuttonRunQuery5.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.MSSQLbuttonRunQuery5.clicked.connect(lambda: timer.setEnabled(self.MSSQLbuttonRunQuery5))
         self.MSSQLbuttonRunQuery5.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql5MSSQL, properties_conn_queries.curMSSQL, order=5))
-        self.MSSQLbuttonRunQuery5.clicked.connect(lambda: timer.setEnabled(self.MSSQLbuttonRunQuery5))
-        self.MSSQLbuttonRunQuery5.setToolTip(properties_conn_queries.sql5MSSQL)
+
+
         # runquery6
         self.MSSQLbuttonRunQuery6 = QPushButton('RUN QUERY 6', self)
+        self.MSSQLbuttonRunQuery6.setToolTip(properties_conn_queries.sql6MSSQL)
         self.MSSQLbuttonRunQuery6.setGeometry(250, 175, 200, 50)
         self.MSSQLbuttonRunQuery6.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.MSSQLbuttonRunQuery6.clicked.connect(lambda: timer.setEnabled(self.MSSQLbuttonRunQuery6))
         self.MSSQLbuttonRunQuery6.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql6MSSQL, properties_conn_queries.curMSSQL, order=6))
-        self.MSSQLbuttonRunQuery6.clicked.connect(lambda: timer.setEnabled(self.MSSQLbuttonRunQuery6))
-        self.MSSQLbuttonRunQuery6.setToolTip(properties_conn_queries.sql6MSSQL)
+
+
         # reset_button
         self.ResetButton = QPushButton('RESET', self)
+        self.ResetButton.setToolTip("Reset all buttons and content of file")
         self.ResetButton.setGeometry(250, 400, 200, 50)
         self.ResetButton.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MSSQLbuttonRunQuery1))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MSSQLbuttonRunQuery2))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MSSQLbuttonRunQuery3))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MSSQLbuttonRunQuery4))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MSSQLbuttonRunQuery5))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MSSQLbuttonRunQuery6))
-        self.ResetButton.setToolTip("Reset all buttons and content of file")
-
 class WindowMySQL(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -97,6 +121,7 @@ class WindowMySQL(QMainWindow):
         self.MySQLbuttonRunQuery1.setGeometry(10, 25, 200, 50)
         self.MySQLbuttonRunQuery1.setStyleSheet(
             "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+
         self.MySQLbuttonRunQuery1.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql1MySQL, properties_conn_queries.curMySQL, order=1))
         self.MySQLbuttonRunQuery1.clicked.connect(lambda: timer.setEnabled(self.MySQLbuttonRunQuery1))
@@ -159,9 +184,6 @@ class WindowMySQL(QMainWindow):
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MySQLbuttonRunQuery5))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MySQLbuttonRunQuery6))
         self.ResetButton.setToolTip("Reset all buttons and content of file")
-
-
-
 class WindowOracle(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -242,57 +264,56 @@ class WindowOracle(QMainWindow):
 class Window(QDialog):
     def __init__(self):
         super().__init__()
+        self.setStyleSheet("background-color: darkolivegreen; border: 2px solid black;")
         self.title = "DB Comparison Tool"
         self.setGeometry(0, 0, 230, 230)
-        # self.top = 100
-        # self.left = 100
-        # self.width = 680
-        # self.height = 500
         self.InitWindow1()
         self.MSSQLButton.clicked.connect(self.windowMSSQL)
         self.MySQLbutton.clicked.connect(self.windowMySQL)
         self.Oraclebutton.clicked.connect(self.windowOracle)
 
 
+
     def InitWindow1(self):
-        # self.setWindowIcon(QtGui.QIcon("C:\\Users\\alber\\OneDrive\\Dokumenty\\database.png"))
         self.setWindowIcon(QIcon('C:\\Users\\alber\\OneDrive\\Dokumenty\\database.png'))
         # first button
         self.MySQLbutton = QPushButton('MySQL Connection', self)
         self.MySQLbutton.setGeometry(10, 25, 200, 50)
-        self.MySQLbutton.clicked.connect(self.dbConnectionMySQL)
-        self.MySQLbutton.setStyleSheet("color : rgb(70,130,180)")
-        self.MySQLbutton.setStyleSheet(
-
-        # "QPushButton:pressed { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
-        # "QPushButton { background-color: #3cbaa2; border: 1px solid black;border-radius: 5px;}"
-        # "QPushButton::hover { background-color: rgb(0,0,205) }""QPushButton:pressed { background-color: rgb(170, 170, 127) }"
-
-        "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
-        "QPushButton:pressed { background-color: #3cbaa2; border: 1px solid black;border-radius: 5px;}")
-        self.setWindowTitle(self.title)
         self.MySQLbutton.setToolTip("Click to connect with MySQL DB")
+        self.MySQLbutton.clicked.connect(self.dbConnectionMySQL)
+        self.MySQLbutton.setStyleSheet(
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.setWindowTitle(self.title)
+
 
         # second button
         self.Oraclebutton = QPushButton('Oracle Connection', self)
         self.Oraclebutton.setGeometry(10, 80, 200, 50)
+        self.Oraclebutton.setToolTip("Click to connect with Oracle DB")
         self.Oraclebutton.clicked.connect(self.dbConnectionORACLE)
         self.Oraclebutton.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton:pressed { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton { background-color: #3cbaa2; border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
         self.setWindowTitle(self.title)
-        self.Oraclebutton.setToolTip("Click to connect with Oracle DB")
+
 
         # third button
         self.MSSQLButton = QPushButton('MSSQL Connection', self)
         self.MSSQLButton.setGeometry(10, 135, 200, 50)
+        self.MSSQLButton.setToolTip("Click to connect with MSSQL DB")
         self.MSSQLButton.clicked.connect(self.dbConnectionMSSQL)
         self.MSSQLButton.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton:pressed { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton { background-color: #3cbaa2; border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
         self.setWindowTitle(self.title)
-        self.MSSQLButton.setToolTip("Click to connect with MSSQL DB")
 
         if os.path.exists(properties_conn_queries.filepath):
             os.remove(properties_conn_queries.filepath)
+
         self.show()
 
     def dbConnectionMySQL(self):
@@ -353,5 +374,5 @@ class Window(QDialog):
 App = QApplication(sys.argv)
 
 window = Window()
-
+App.setStyle('Fusion')
 sys.exit(App.exec())

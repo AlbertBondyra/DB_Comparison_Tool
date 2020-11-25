@@ -39,9 +39,19 @@ def runQuery(query, cursor, order):
 
 def setEnabled(button):
     button.setEnabled(False)
+    button.setStyleSheet(
+    "QPushButton { background-color: rgb(143,188,143)}"
+    "QPushButton {border: 1px solid black;border-radius: 5px;}")
+
+
+
 
 
 def resetButtons(button):
     button.setEnabled(True)
+    button.setStyleSheet(
+        "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+        "QPushButton {border: 1px solid black;border-radius: 5px;}"
+        "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
     if os.path.exists(properties_conn_queries.filepath):
         os.remove(properties_conn_queries.filepath)
