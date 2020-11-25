@@ -1,23 +1,20 @@
 import sys
 import cx_Oracle
-from PyQt5 import Qt
-
 import config
 import properties_conn_queries
 import pymysql
 import timer
 import os
-import mysql.connector
-import pyodbc
-from datetime import datetime
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton,
-                             QMessageBox, QDialog, QVBoxLayout)
+                             QMessageBox, QDialog)
 from PyQt5.QtGui import QIcon
+
 
 class WindowMSSQL(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setWindowTitle("MSSQL")
+        self.setStyleSheet("background-color: darkolivegreen; border: 2px solid black;")
         self.setWindowIcon(QIcon('C:\\Users\\alber\\Downloads\\mssql_icon.png'))
         self.setFixedSize(480, 480)
 
@@ -44,7 +41,6 @@ class WindowMSSQL(QMainWindow):
         self.MSSQLbuttonRunQuery2.clicked.connect(lambda: timer.setEnabled(self.MSSQLbuttonRunQuery2))
         self.MSSQLbuttonRunQuery2.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql2MSSQL, properties_conn_queries.curMSSQL, order=2))
-
 
         # runquery3
         self.MSSQLbuttonRunQuery3 = QPushButton('RUN QUERY 3', self)
@@ -82,7 +78,6 @@ class WindowMSSQL(QMainWindow):
         self.MSSQLbuttonRunQuery5.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql5MSSQL, properties_conn_queries.curMSSQL, order=5))
 
-
         # runquery6
         self.MSSQLbuttonRunQuery6 = QPushButton('RUN QUERY 6', self)
         self.MSSQLbuttonRunQuery6.setToolTip(properties_conn_queries.sql6MSSQL)
@@ -94,7 +89,6 @@ class WindowMSSQL(QMainWindow):
         self.MSSQLbuttonRunQuery6.clicked.connect(lambda: timer.setEnabled(self.MSSQLbuttonRunQuery6))
         self.MSSQLbuttonRunQuery6.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql6MSSQL, properties_conn_queries.curMSSQL, order=6))
-
 
         # reset_button
         self.ResetButton = QPushButton('RESET', self)
@@ -110,154 +104,199 @@ class WindowMSSQL(QMainWindow):
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MSSQLbuttonRunQuery4))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MSSQLbuttonRunQuery5))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MSSQLbuttonRunQuery6))
+
+
 class WindowMySQL(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setWindowTitle("MySQL")
+        self.setStyleSheet("background-color: darkolivegreen; border: 2px solid black;")
         self.setWindowIcon(QIcon('C:\\Users\\alber\\Downloads\\mysql_icon.png'))
         self.setFixedSize(480, 480)
         # runquery1
         self.MySQLbuttonRunQuery1 = QPushButton('RUN QUERY 1', self)
         self.MySQLbuttonRunQuery1.setGeometry(10, 25, 200, 50)
+        self.MySQLbuttonRunQuery1.setToolTip(properties_conn_queries.sql1MySQL)
         self.MySQLbuttonRunQuery1.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
-
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.MySQLbuttonRunQuery1.clicked.connect(lambda: timer.setEnabled(self.MySQLbuttonRunQuery1))
         self.MySQLbuttonRunQuery1.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql1MySQL, properties_conn_queries.curMySQL, order=1))
-        self.MySQLbuttonRunQuery1.clicked.connect(lambda: timer.setEnabled(self.MySQLbuttonRunQuery1))
-        self.MySQLbuttonRunQuery1.setToolTip(properties_conn_queries.sql1MySQL)
-
+        # runquery2
         self.MySQLbuttonRunQuery2 = QPushButton('RUN QUERY 2', self)
         self.MySQLbuttonRunQuery2.setGeometry(10, 100, 200, 50)
+        self.MySQLbuttonRunQuery2.setToolTip(properties_conn_queries.sql2MySQL)
         self.MySQLbuttonRunQuery2.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.MySQLbuttonRunQuery2.clicked.connect(lambda: timer.setEnabled(self.MySQLbuttonRunQuery2))
         self.MySQLbuttonRunQuery2.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql2MySQL, properties_conn_queries.curMySQL, order=2))
-        self.MySQLbuttonRunQuery2.clicked.connect(lambda: timer.setEnabled(self.MySQLbuttonRunQuery2))
-        self.MySQLbuttonRunQuery2.setToolTip(properties_conn_queries.sql1MySQL)
         # runquery3
+
         self.MySQLbuttonRunQuery3 = QPushButton('RUN QUERY 3', self)
         self.MySQLbuttonRunQuery3.setGeometry(10, 175, 200, 50)
+        self.MySQLbuttonRunQuery3.setToolTip(properties_conn_queries.sql3MySQL)
         self.MySQLbuttonRunQuery3.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.MySQLbuttonRunQuery3.clicked.connect(lambda: timer.setEnabled(self.MySQLbuttonRunQuery3))
         self.MySQLbuttonRunQuery3.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql3MySQL, properties_conn_queries.curMySQL, order=3))
-        self.MySQLbuttonRunQuery3.clicked.connect(lambda: timer.setEnabled(self.MySQLbuttonRunQuery3))
-        self.MySQLbuttonRunQuery3.setToolTip(properties_conn_queries.sql3MySQL)
 
         # runquery4
         self.MySQLbuttonRunQuery4 = QPushButton('RUN QUERY 4', self)
         self.MySQLbuttonRunQuery4.setGeometry(250, 25, 200, 50)
+        self.MySQLbuttonRunQuery4.setToolTip(properties_conn_queries.sql4MySQL)
         self.MySQLbuttonRunQuery4.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.MySQLbuttonRunQuery4.clicked.connect(lambda: timer.setEnabled(self.MySQLbuttonRunQuery4))
         self.MySQLbuttonRunQuery4.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql4MySQL, properties_conn_queries.curMySQL, order=4))
-        self.MySQLbuttonRunQuery4.clicked.connect(lambda: timer.setEnabled(self.MySQLbuttonRunQuery4))
-        self.MySQLbuttonRunQuery4.setToolTip(properties_conn_queries.sql4MySQL)
+
         # runquery5
         self.MySQLbuttonRunQuery5 = QPushButton('RUN QUERY 5', self)
         self.MySQLbuttonRunQuery5.setGeometry(250, 100, 200, 50)
+        self.MySQLbuttonRunQuery5.setToolTip(properties_conn_queries.sql5MySQL)
         self.MySQLbuttonRunQuery5.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.MySQLbuttonRunQuery5.clicked.connect(lambda: timer.setEnabled(self.MySQLbuttonRunQuery5))
         self.MySQLbuttonRunQuery5.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql5MySQL, properties_conn_queries.curMySQL, order=5))
-        self.MySQLbuttonRunQuery5.clicked.connect(lambda: timer.setEnabled(self.MySQLbuttonRunQuery5))
-        self.MySQLbuttonRunQuery5.setToolTip(properties_conn_queries.sql5MySQL)
-        #runquery6
+
+        # runquery6
         self.MySQLbuttonRunQuery6 = QPushButton('RUN QUERY 6', self)
         self.MySQLbuttonRunQuery6.setGeometry(250, 175, 200, 50)
+        self.MySQLbuttonRunQuery6.setToolTip(properties_conn_queries.sql6MySQL)
         self.MySQLbuttonRunQuery6.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.MySQLbuttonRunQuery6.clicked.connect(lambda: timer.setEnabled(self.MySQLbuttonRunQuery6))
         self.MySQLbuttonRunQuery6.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql6MySQL, properties_conn_queries.curMySQL, order=6))
-        self.MySQLbuttonRunQuery6.clicked.connect(lambda: timer.setEnabled(self.MySQLbuttonRunQuery6))
-        self.MySQLbuttonRunQuery6.setToolTip(properties_conn_queries.sql6MySQL)
+
         # reset button
         self.ResetButton = QPushButton('RESET', self)
         self.ResetButton.setGeometry(250, 400, 200, 50)
+        self.ResetButton.setToolTip("Reset all buttons and content of file")
         self.ResetButton.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MySQLbuttonRunQuery1))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MySQLbuttonRunQuery2))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MySQLbuttonRunQuery3))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MySQLbuttonRunQuery4))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MySQLbuttonRunQuery5))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.MySQLbuttonRunQuery6))
-        self.ResetButton.setToolTip("Reset all buttons and content of file")
+
+
+
 class WindowOracle(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setWindowTitle("Oracle")
+        self.setStyleSheet("background-color: darkolivegreen; border: 2px solid black;")
         self.setFixedSize(480, 480)
         self.setWindowIcon(QIcon('C:\\Users\\alber\\Downloads\\oracle_icon.png'))
         # runquery1
         self.OraclebuttonRunQuery1 = QPushButton('RUN QUERY 1', self)
         self.OraclebuttonRunQuery1.setGeometry(10, 25, 200, 50)
+        self.OraclebuttonRunQuery1.setToolTip(properties_conn_queries.sql1ORACLE)
         self.OraclebuttonRunQuery1.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.OraclebuttonRunQuery1.clicked.connect(lambda: timer.setEnabled(self.OraclebuttonRunQuery1))
         self.OraclebuttonRunQuery1.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql1ORACLE, properties_conn_queries.curOracle, order=1))
-        self.OraclebuttonRunQuery1.clicked.connect(lambda: timer.setEnabled(self.OraclebuttonRunQuery1))
-        self.OraclebuttonRunQuery1.setToolTip(properties_conn_queries.sql1ORACLE)
-        #runquery2
+
+
+        # runquery2
         self.OraclebuttonRunQuery2 = QPushButton('RUN QUERY 2', self)
         self.OraclebuttonRunQuery2.setGeometry(10, 100, 200, 50)
-        self.OraclebuttonRunQuery2.setStyleSheet(
-             "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
-        self.OraclebuttonRunQuery2.clicked.connect(
-             lambda: timer.runQuery(properties_conn_queries.sql2ORACLE, properties_conn_queries.curOracle, order=2))
-        self.OraclebuttonRunQuery2.clicked.connect(lambda: timer.setEnabled(self.OraclebuttonRunQuery2))
         self.OraclebuttonRunQuery2.setToolTip(properties_conn_queries.sql2ORACLE)
+        self.OraclebuttonRunQuery2.setStyleSheet(
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.OraclebuttonRunQuery2.clicked.connect(lambda: timer.setEnabled(self.OraclebuttonRunQuery2))
+        self.OraclebuttonRunQuery2.clicked.connect(
+            lambda: timer.runQuery(properties_conn_queries.sql2ORACLE, properties_conn_queries.curOracle, order=2))
+
         # runquery3
         self.OraclebuttonRunQuery3 = QPushButton('RUN QUERY 3', self)
         self.OraclebuttonRunQuery3.setGeometry(10, 175, 200, 50)
+        self.OraclebuttonRunQuery3.setToolTip(properties_conn_queries.sql3ORACLE)
         self.OraclebuttonRunQuery3.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.OraclebuttonRunQuery3.clicked.connect(lambda: timer.setEnabled(self.OraclebuttonRunQuery3))
         self.OraclebuttonRunQuery3.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql3ORACLE, properties_conn_queries.curOracle, order=3))
-        self.OraclebuttonRunQuery3.clicked.connect(lambda: timer.setEnabled(self.OraclebuttonRunQuery3))
-        self.OraclebuttonRunQuery3.setToolTip(properties_conn_queries.sql3ORACLE)
+
+
         # runquery4
         self.OraclebuttonRunQuery4 = QPushButton('RUN QUERY 4', self)
         self.OraclebuttonRunQuery4.setGeometry(250, 25, 200, 50)
+        self.OraclebuttonRunQuery4.setToolTip(properties_conn_queries.sql4ORACLE)
         self.OraclebuttonRunQuery4.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.OraclebuttonRunQuery4.clicked.connect(lambda: timer.setEnabled(self.OraclebuttonRunQuery4))
         self.OraclebuttonRunQuery4.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql4ORACLE, properties_conn_queries.curOracle, order=4))
-        self.OraclebuttonRunQuery4.clicked.connect(lambda: timer.setEnabled(self.OraclebuttonRunQuery4))
-        self.OraclebuttonRunQuery4.setToolTip(properties_conn_queries.sql4ORACLE)
+
         # runquery5
         self.OraclebuttonRunQuery5 = QPushButton('RUN QUERY 5', self)
         self.OraclebuttonRunQuery5.setGeometry(250, 100, 200, 50)
+        self.OraclebuttonRunQuery5.setToolTip(properties_conn_queries.sql5ORACLE)
         self.OraclebuttonRunQuery5.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.OraclebuttonRunQuery5.clicked.connect(lambda: timer.setEnabled(self.OraclebuttonRunQuery5))
         self.OraclebuttonRunQuery5.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql5ORACLE, properties_conn_queries.curOracle, order=5))
-        self.OraclebuttonRunQuery5.clicked.connect(lambda: timer.setEnabled(self.OraclebuttonRunQuery5))
-        self.OraclebuttonRunQuery5.setToolTip(properties_conn_queries.sql5ORACLE)
+
         # runquery6
         self.OraclebuttonRunQuery6 = QPushButton('RUN QUERY 6', self)
         self.OraclebuttonRunQuery6.setGeometry(250, 175, 200, 50)
+        self.OraclebuttonRunQuery6.setToolTip(properties_conn_queries.sql6ORACLE)
         self.OraclebuttonRunQuery6.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
+        self.OraclebuttonRunQuery6.clicked.connect(lambda: timer.setEnabled(self.OraclebuttonRunQuery6))
         self.OraclebuttonRunQuery6.clicked.connect(
             lambda: timer.runQuery(properties_conn_queries.sql6ORACLE, properties_conn_queries.curOracle, order=6))
-        self.OraclebuttonRunQuery6.clicked.connect(lambda: timer.setEnabled(self.OraclebuttonRunQuery6))
-        self.OraclebuttonRunQuery6.setToolTip(properties_conn_queries.sql6ORACLE)
+
+
         # # reset button
         self.ResetButton = QPushButton('RESET', self)
         self.ResetButton.setGeometry(250, 400, 200, 50)
+        self.ResetButton.setToolTip("Reset all buttons and content of file")
         self.ResetButton.setStyleSheet(
-            "QPushButton::hover { background-color: lightgreen }""QPushButton:pressed { background-color: red }")
+            "QPushButton { background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))}"
+            "QPushButton {border: 1px solid black;border-radius: 5px;}"
+            "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.OraclebuttonRunQuery1))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.OraclebuttonRunQuery2))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.OraclebuttonRunQuery3))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.OraclebuttonRunQuery4))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.OraclebuttonRunQuery5))
         self.ResetButton.clicked.connect(lambda: timer.resetButtons(self.OraclebuttonRunQuery6))
-        self.ResetButton.setToolTip("Reset all buttons and content of file")
-
-
 
 
 
@@ -272,8 +311,6 @@ class Window(QDialog):
         self.MySQLbutton.clicked.connect(self.windowMySQL)
         self.Oraclebutton.clicked.connect(self.windowOracle)
 
-
-
     def InitWindow1(self):
         self.setWindowIcon(QIcon('C:\\Users\\alber\\OneDrive\\Dokumenty\\database.png'))
         # first button
@@ -287,7 +324,6 @@ class Window(QDialog):
             "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
         self.setWindowTitle(self.title)
 
-
         # second button
         self.Oraclebutton = QPushButton('Oracle Connection', self)
         self.Oraclebutton.setGeometry(10, 80, 200, 50)
@@ -298,7 +334,6 @@ class Window(QDialog):
             "QPushButton { background-color: #3cbaa2; border: 1px solid black;border-radius: 5px;}"
             "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
         self.setWindowTitle(self.title)
-
 
         # third button
         self.MSSQLButton = QPushButton('MSSQL Connection', self)
