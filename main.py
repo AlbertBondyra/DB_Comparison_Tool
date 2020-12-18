@@ -4,6 +4,7 @@ import config
 import properties_conn_queries
 import pymysql
 import timer
+import second_query
 import os
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton,
                              QMessageBox, QDialog)
@@ -346,8 +347,8 @@ class Window(QDialog):
             "QPushButton::hover { background-color: rgb(152,251,152) }""QPushButton:pressed { background-color: rgb(143,188,143)}")
         self.setWindowTitle(self.title)
 
-        if os.path.exists(properties_conn_queries.filepath):
-            os.remove(properties_conn_queries.filepath)
+        #if os.path.exists(properties_conn_queries.filepath):
+        #   os.remove(properties_conn_queries.filepath)
 
         self.show()
 
