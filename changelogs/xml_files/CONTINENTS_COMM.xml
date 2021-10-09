@@ -1,0 +1,31 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<databaseChangeLog  
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+        xmlns:ora="http://www.liquibase.org/xml/ns/dbchangelog-ext"  
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">  
+
+   
+	 <changeSet  id="2"  author="albert">  
+      <createTable  tableName="CONTINENTS">  
+            <column  name="CONTINENT_CODE"  type="char(2)" />  
+            <column  name="CONTINENT_NAME"  type="nvarchar(60)" />  
+			      <column  name="SURFACE_IN_MLN_KM"  type="decimal(4,2)" />  
+			      <column  name="PROCENTAGE_EARTH_SURFACE"  type="decimal(4,2)" /> 
+			      <column  name="LANDS_PROCENTAGE"  type="decimal(4,2)" />  
+		</createTable>   
+    </changeSet>
+    <changeSet  author="liquibase-docs"  id="addPrimaryKey-example">  
+      <addNotNullConstraint columnDataType="char(2)" columnName="CONTINENT_CODE" tableName="CONTINENTS"/>
+      <addPrimaryKey columnNames="CONTINENT_CODE" tableName="CONTINENTS"/>  
+      <addNotNullConstraint columnDataType="nvarchar(60)" columnName="CONTINENT_NAME" tableName="CONTINENTS"/>
+    </changeSet>
+    
+ 
+
+</databaseChangeLog>
+
+
+
+  

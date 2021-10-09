@@ -1,0 +1,36 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<databaseChangeLog  
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+        xmlns:ora="http://www.liquibase.org/xml/ns/dbchangelog-ext"  
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">  
+
+   
+
+     <changeSet  id="2"  author="albert">  
+        <createTable  tableName="REGIONS">  
+            <column  name="region_code"  type="char(2)" />  
+			<column  name="region_name"  type="varchar(50)" /> 
+            <column  name="country_code"  type="char(2)" /> 
+			<column  name="latitiude"  type="nvarchar(20)" /> 
+			<column  name="longitiute"  type="nvarchar(20)" /> 
+			<column  name="postal_range_code"  type="nvarchar(20)" /> 			 
+		</createTable>   
+        <addNotNullConstraint columnDataType="char(2)" tableName="REGIONS" columnName="region_code"/>
+        <addPrimaryKey columnNames="region_code"  tableName="REGIONS" />
+        <addForeignKeyConstraint  baseColumnNames="country_code"    
+            baseTableName="REGIONS"   
+            constraintName="fk_country_region_code"    
+            referencedColumnNames="country_code"   
+            referencedTableName="COUNTRIES"/>
+        <addNotNullConstraint columnDataType="varchar(50)" tableName="REGIONS" columnName="region_name"/>
+        <addNotNullConstraint columnDataType="char(2)" tableName="REGIONS" columnName="country_code"/>
+     </changeSet>
+     
+
+</databaseChangeLog>
+
+
+
+  

@@ -1,0 +1,35 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<databaseChangeLog  
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+        xmlns:ora="http://www.liquibase.org/xml/ns/dbchangelog-ext"  
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">  
+
+   
+
+     <changeSet  id="2"  author="albert">  
+      <createTable  tableName="BEST_HOSPITALS">  
+      <column  name="hospital_id"  type="nvarchar(50)" />  
+			<column  name="hospital_postal_code"  type="nvarchar(30)" /> 
+      <column  name="hospital_fax"  type="nvarchar(30)" /> 
+			<column  name="hospital_adress"  type="nvarchar(70)" /> 
+			<column  name="hospital_name"  type="nvarchar(70)" /> 
+			<column  name="hospital_transformation"  type="nvarchar(20)" /> 
+			<column  name="hospital_type"  type="nvarchar(70)" /> 
+			<column  name="hospital_ownership"  type="nvarchar(30)" /> 			 
+		</createTable>   
+    </changeSet>
+
+    <changeSet  author="liquibase-docs"  id="example">  
+      <addNotNullConstraint columnDataType="nvarchar(50)" columnName="hospital_id" tableName="BEST_HOSPITALS"/>
+      <addPrimaryKey columnNames="hospital_id"  tableName="BEST_HOSPITALS" /> 
+      <addNotNullConstraint columnDataType="nvarchar(30)" columnName="hospital_ownership" tableName="BEST_HOSPITALS"/>
+    </changeSet>
+ 
+
+</databaseChangeLog>
+
+
+
+  

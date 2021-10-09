@@ -1,0 +1,54 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<databaseChangeLog  
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+        xmlns:ora="http://www.liquibase.org/xml/ns/dbchangelog-ext"  
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">  
+
+    <changeSet  id="1"  author="albert" >  
+        <createTable  tableName="TESTS">  
+            <column  name="patient_id"  type="nvarchar(50)" />  
+            <column  name="test_start_date"  type="nvarchar(20)" />  
+			<column  name="currency"  type="varchar(20)" />  
+			<column  name="test_type"  type="varchar(30)" />
+			<column  name="effectiveness"  type="nvarchar(10)" /> 	
+			<column  name="has_global_recomendation"  type="varchar(10)" /> 
+			<column  name="draw_metodology"  type="varchar(30)" /> 
+			<column  name="waiting_time_on_results"  type="nvarchar(20)" /> 
+			<column  name="price"  type="decimal(3,2)" /> 	
+			<column  name="result"  type="varchar(20)" />
+		</createTable>
+         <addForeignKeyConstraint  baseColumnNames="patient_id"    
+            baseTableName="TESTS"   
+            constraintName="fk_paitent_id"    
+            referencedColumnNames="patient_id"   
+            referencedTableName="PATIENTS"/>   
+        <addNotNullConstraint columnDataType="varchar(20)" tableName="TESTS" columnName="result"/>
+        <addNotNullConstraint columnDataType="varchar(10)" tableName="TESTS" columnName="has_global_recomendation"/>
+        <addNotNullConstraint columnDataType="nvarchar(20)" tableName="TESTS" columnName="test_start_date"/>
+        <addNotNullConstraint columnDataType="nvarchar(50)" tableName="TESTS" columnName="patient_id"/>
+    </changeSet>
+    <changeSet author="abon" id="1">
+  		<sql>
+     	ALTER TABLE TESTS ADD CHECK ( result IN (
+        'POSITIVE',
+        'NEGATIVE'));
+  		</sql>
+          <sql>
+     	ALTER TABLE TESTS ADD CHECK ( has_global_recomendation IN (
+        'yes',
+        'no'));
+  		</sql>
+	</changeSet>
+
+    
+
+    
+ 
+
+</databaseChangeLog>
+
+
+
+  

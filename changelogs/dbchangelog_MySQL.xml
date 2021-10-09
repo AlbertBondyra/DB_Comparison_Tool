@@ -1,0 +1,26 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<databaseChangeLog  
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+        xmlns:ora="http://www.liquibase.org/xml/ns/dbchangelog-ext"  
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">  
+
+    <preConditions>  
+        <runningAs  username="alamar6"/>  
+    </preConditions>  
+    <include  file=".\xml_files\CONTINENTS_COMM.xml" relativeToChangelogFile="true"/> 
+    <include  file=".\xml_files\COUNTRIES_COMM.xml" relativeToChangelogFile="true"/>  
+    <include  file=".\xml_files\BEST_HOSPITALS_COMM.xml" relativeToChangelogFile="true"/> 
+    <include  file=".\xml_files\REGIONS_COMM.xml" relativeToChangelogFile="true"/>
+    <include  file=".\xml_files\PATIENTS_COMM.xml" relativeToChangelogFile="true"/>  
+    <include  file=".\xml_files\TESTS_COMM.xml" relativeToChangelogFile="true"/>  
+	<include  file=".\xml_files\DISEASE_STATUS_CHANGE_COMM.xml" relativeToChangelogFile="true"/>  
+    <include  file=".\xml_files\inserts.xml" relativeToChangelogFile="true"/>   
+
+
+</databaseChangeLog>
+
+
+
+  

@@ -1,0 +1,86 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<databaseChangeLog  
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+        xmlns:ora="http://www.liquibase.org/xml/ns/dbchangelog-ext"  
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">  
+
+   
+
+<changeSet  author="albert"  id="Inserts" runInTransaction="false" >
+<!-- <sqlFile dbms="oracle" encoding="utf8" path="./export_continents_with_comma.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>	 
+<sqlFile dbms="mssql, mysql" encoding="utf8" path="./export_continents_with_dot.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>	  
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./export_REGIONS.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./export_PATIENTS_MySQL.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>  -->
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./export_COUNTRIES_MySQL.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/> 
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./export_BEST_HOSPITALS.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests1.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests2.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests3.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests4.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests5.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests6.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests7.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests8.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests9.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests10.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests11.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests12.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests13.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests14.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests15.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests16.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests17.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests18.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests19.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests20.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests21.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests22.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests23.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests24.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests25.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests26.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests27.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests28.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests29.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests30.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests31.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests32.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./tests/Tests33.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/> 
+
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases1.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases2.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases3.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases4.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases5.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases6.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases7.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases8.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases9.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases10.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases11.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases12.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases13.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases14.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases15.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases16.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases17.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases18.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases19.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases20.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases21.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases22.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases23.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases24.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases25.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases26.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases27.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases28.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases29.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases30.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/> 
+<sqlFile dbms="oracle, mssql, mysql" encoding="utf8" path="./disease_status_change/diseases31.sql" endDelimiter=";" relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>  
+</changeSet>
+
+</databaseChangeLog>
+ 

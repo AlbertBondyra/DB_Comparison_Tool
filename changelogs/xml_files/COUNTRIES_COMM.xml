@@ -1,0 +1,60 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<databaseChangeLog  
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+        xmlns:ora="http://www.liquibase.org/xml/ns/dbchangelog-ext"  
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">  
+
+   
+
+    <changeSet  id="2"  author="albert">  
+        <createTable  tableName="COUNTRIES">  
+            <column  name="country_code"  type="char(2)" />  
+			<column  name="continent_code"  type="char(2)" /> 
+            <column  name="country_name"  type="varchar(50)" /> 
+			<column  name="land"  type="nvarchar(50)" /> 
+			<column  name="population"  type="integer" /> 
+			<column  name="in_UE"  type="boolean" /> 
+			<column  name="in_NATO"  type="boolean" /> 
+			<column  name="area_in_sq_mi"  type="decimal" />
+			<column  name="pop_density_per_sq_mi"  type="decimal(6,1)" /> 
+			<column  name="coastline"  type="decimal(3,2)" /> 
+			<column  name="net_migration"  type="decimal(3,2)" /> 
+			<column  name="infant_mortality"  type="decimal(4,2)" /> 
+			<column  name="GDP"  type="integer" />   
+			<column  name="literacy_in_percentage"  type="decimal(4,2)" /> 
+			<column  name="phones_per_1000"  type="decimal(5,2)" />  			
+			<column  name="arable_in_percentage"  type="decimal(4,2)" /> 
+			<column  name="crops_in_percentage"  type="decimal(3,2)" /> 
+			<column  name="other_in_percentage"  type="decimal(4,2)" /> 
+			<column  name="climate_in_percentage"  type="integer" /> 
+			<column  name="birthdate_in_percentage"  type="decimal(4,2)" />  
+			<column  name="datehrate_in_percentage"  type="decimal(4,2)" /> 
+			<column  name="agriculture"  type="decimal(4,3)" />  
+			<column  name="industry"  type="decimal(4,3)" />  
+			<column  name="service"  type="decimal(4,3)" />  
+		</createTable>   
+    </changeSet> 
+	<changeSet  author="liquibase-docs"  id="addPrimaryKey-example">  
+	 <addNotNullConstraint columnDataType="char(2)" tableName="COUNTRIES" columnName="COUNTRY_CODE"/>
+      <addPrimaryKey columnNames="COUNTRY_CODE"  tableName="COUNTRIES" /> 
+	  <addForeignKeyConstraint  baseColumnNames="CONTINENT_CODE"    
+            baseTableName="COUNTRIES"   
+            constraintName="fk_continent_code"    
+            referencedColumnNames="CONTINENT_CODE"   
+            referencedTableName="CONTINENTS"/>
+	 <addNotNullConstraint columnDataType="varchar(50)" tableName="COUNTRIES" columnName="country_name"/>
+	 <addNotNullConstraint columnDataType="char(2)"  tableName="COUNTRIES" columnName="CONTINENT_CODE"/>    
+	 <addNotNullConstraint columnDataType="boolean" tableName="COUNTRIES" columnName="in_UE"/>
+	 <addNotNullConstraint columnDataType="boolean" tableName="COUNTRIES" columnName="in_NATO"/>
+    </changeSet>
+	
+	 
+
+
+</databaseChangeLog>
+
+
+
+  

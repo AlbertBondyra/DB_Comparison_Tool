@@ -1,0 +1,84 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<databaseChangeLog  
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+        xmlns:ora="http://www.liquibase.org/xml/ns/dbchangelog-ext"  
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">  
+
+   
+
+    <changeSet  id="1"  author="albert">  
+        <createTable  tableName="PATIENTS">  
+            <column  name="patient_id"  type="nvarchar(50)" />  
+            <column  name="disease_start_date"  type="nvarchar(20)" />  
+			<column  name="age"  type="integer" />  
+			<column  name="gender"  type="varchar(10)" />
+			<column  name="country"  type="varchar(50)" /> 	
+			<column  name="country_code"  type="char(2)" /> 
+			<column  name="region"  type="varchar(50)" /> 
+			<column  name="region_code"  type="char(2)" /> 
+			<column  name="city"  type="varchar(80)" /> 	
+			<column  name="hospital_visit_date"  type="nvarchar(20)" />
+			<column  name="international_traveler"  type="boolean" /> 	
+			<column  name="domestic_traveler"  type="boolean" /> 	
+			<column  name="exposure_start"  type="nvarchar(20)"  />
+			<column  name="exposure_end"  type="nvarchar(20)" /> 	
+			<column  name="visiting_Wuhan"  type="boolean" /> 	
+			<column  name="from_Wuhan"  type="boolean" />
+			<column  name="has_overweight"  type="boolean" /> 
+			<column  name="do_sport"  type="boolean" /> 
+			<column  name="has_comordibities"  type="boolean" /> 			
+			<column  name="is_recovered"  type="boolean" /> 	
+			<column  name="is_dead"  type="boolean" />
+			<column  name="is_sick"  type="boolean" /> 	
+			<column  name="hospital_id"  type="nvarchar(50)" /> 	
+			<column  name="symptom"  type="nvarchar(80)" />
+			<column  name="SOURCE_DETAILS"  type="nvarchar(100)" /> 	
+        </createTable>   
+    </changeSet>
+	<changeSet  author="liquibase-docs"  id="addPrimaryKey-example"> 
+		<addNotNullConstraint columnDataType="nvarchar(50)" tableName="PATIENTS" columnName="patient_id"/> 
+		<addNotNullConstraint columnDataType="char(2)" tableName="PATIENTS" columnName="country_code"/>  
+      	<addPrimaryKey columnNames="patient_id"  tableName="PATIENTS" /> 
+	</changeSet>
+
+	<changeSet author="liquibase-docs"  id="addForeignKey1-example">
+		<addForeignKeyConstraint  baseColumnNames="COUNTRY_CODE"    
+				baseTableName="PATIENTS"   
+				constraintName="fk_country_code"    
+				referencedColumnNames="COUNTRY_CODE"   
+				referencedTableName="COUNTRIES"/>
+	   <addNotNullConstraint columnDataType="integer" tableName="PATIENTS" columnName="age"/> 
+	   <addNotNullConstraint columnDataType="varchar(10)" tableName="PATIENTS" columnName="gender"/> 
+	   <addNotNullConstraint columnDataType="varchar(50)" tableName="PATIENTS" columnName="country"/> 
+	   <addNotNullConstraint columnDataType="boolean" tableName="PATIENTS" columnName="is_recovered"/> 
+	   <addNotNullConstraint columnDataType="boolean" tableName="PATIENTS" columnName="is_dead"/> 
+	   <addNotNullConstraint columnDataType="boolean" tableName="PATIENTS" columnName="is_sick"/> 
+	   <addNotNullConstraint columnDataType="nvarchar(20)" tableName="PATIENTS" columnName="hospital_visit_date"/> 
+	   <addNotNullConstraint columnDataType="nvarchar(20)" tableName="PATIENTS" columnName="exposure_start"/> 
+	   <addNotNullConstraint columnDataType="nvarchar(20)" tableName="PATIENTS" columnName="exposure_end"/> 
+	   <addForeignKeyConstraint  baseColumnNames="hospital_id"    
+            baseTableName="PATIENTS"   
+            constraintName="fk_hospital_id"    
+            referencedColumnNames="hospital_id"   
+            referencedTableName="BEST_HOSPITALS"/>
+		<addForeignKeyConstraint  baseColumnNames="REGION_CODE"    
+				baseTableName="PATIENTS"   
+				constraintName="fk_region_patient_code"    
+				referencedColumnNames="REGION_CODE"   
+				referencedTableName="REGIONS"/> 
+	</changeSet> 	
+	<changeSet author="alamar6" id="1">
+  		<sql>
+     	ALTER TABLE PATIENTS ADD CHECK ( gender IN (
+        'female',
+        'male'));
+  		</sql>
+	</changeSet>
+
+</databaseChangeLog>
+
+
+
+  
